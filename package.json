@@ -1,0 +1,61 @@
+{
+  "name": "huanyi",
+  "version": "0.4.1",
+  "description": "唤译 · 随叫随到的 AI 桌面翻译助手",
+  "main": "src/main.cjs",
+  "author": "Huanyi",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test tests/*.test.cjs",
+    "test:desktop": "node scripts/smoke.cjs",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win portable",
+    "test:portable": "node scripts/portable-smoke.cjs",
+    "test:selection": "node scripts/selection-smoke.cjs",
+    "test:interaction": "node scripts/interaction-smoke.cjs",
+    "test:headless": "node scripts/headless-smoke.cjs",
+    "test:package": "node scripts/package-check.cjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "electron": "44.7.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.huanyi.translate",
+    "productName": "Huanyi",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "artifactName": "Huanyi-${version}-${arch}.${ext}",
+      "signExecutable": false
+    },
+    "portable": {
+      "requestExecutionLevel": "user"
+    },
+    "asarUnpack": [
+      "src/native/**/*"
+    ]
+  },
+  "dependencies": {
+    "koffi": "3.3.3"
+  }
+}
