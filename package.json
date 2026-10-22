@@ -1,6 +1,6 @@
 {
   "name": "huanyi",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "唤译 · 随叫随到的 AI 桌面翻译助手",
   "main": "src/main.cjs",
   "author": "Huanyi",
